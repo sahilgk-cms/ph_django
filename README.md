@@ -73,6 +73,10 @@ Run the streamlit file in another terminal....
 ```
 We can see the articles on http://localhost:8000/ph
 
+## Limitations
+- Not at all scalable. Currently loaded only 1000 rows. For 40,000 rows it loads too slowly or throws error.
+- Only good for rendering HTML templates
+- Does not return API responses in JSON format which can be integrated with other Frontend frameworks.
 
 ## Screenshots
 - **Article list view**
