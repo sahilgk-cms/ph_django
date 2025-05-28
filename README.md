@@ -75,3 +75,4 @@ We can see the articles on http://localhost:8000/ph
 
 
 ## Screenshots
+![image](https://github.com/user-attachments/assets/d6da8b51-cab1-4b8c-9cc3-6801c75ef5f6)
