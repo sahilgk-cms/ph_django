@@ -1,0 +1,25 @@
+{% extends "ph/base.html" %}
+
+{% block title %}
+Article detail
+{% endblock  %}
+
+{% block content %}
+    <h1>{{ article.title }}</h1>
+    <p><strong>Date:</strong> {{ article.date }}</p>
+    <p><strong>Text:</strong> {{ article.text }}</p>
+    <p><strong>Source:</strong> {{ article.scraped_from }}</p>
+    <p><strong>Scraped date:</strong> {{ article.scraped_date }}</p>
+    <p><strong>Sentiment:</strong> {{ article.sentiment_color }}</p>
+    <p>
+        <strong>Category:</strong>
+        {% if article.category %}
+            {{ article.category|join:", " }}
+        {% else %}
+            Not specified
+        {% endif %}
+    </p>
+    <p><a href = "{{ article.article_links }}">Read full article</a></p>
+    <hr>
+    <p><a href = '{% url "article-index-page" %}'>Back to all articles</a></p>
+{% endblock  %}

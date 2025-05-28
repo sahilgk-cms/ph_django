@@ -1,0 +1,58 @@
+{% extends "ph/base.html" %}
+
+{% block title %}
+Article list
+{% endblock  %}
+
+{% block content %}
+    <h1>Article links</h1>
+
+<!--Filter form-->
+    <form method = "GET">
+
+        <label for="sentiment_color">Sentiment</label>
+        <select name="sentiment_color" id="sentiment_color" onchange="this.form.submit()">
+            <option value = "">All</option>
+                {% for color in sentiment_colors %}
+                    <option value = "{{ color }}" {% if selected_sentiment == color %} selected {% endif %}>{{ color }}</option>
+                {% endfor %}
+        </select>
+
+        <label for="category">Category</label>
+        <select name="category" id="category" onchange="this.form.submit()">
+            <option value = "">All</option>
+                {% for category in categories %}
+                    <option value = "{{ category }}" {% if selected_category == category %} selected {% endif %}>{{ category }}</option>
+                {% endfor %}
+        </select>
+
+    </form>
+
+<!--Articles list-->
+    <ul>
+        {% for article in articles %}
+            <li>
+                <p>Date: {{ article.date }}</p>
+                <p>title: {{ article.title }}</p>
+                <p>Source: {{ article.scraped_from }}</p>
+                <a href = "{% url "article-detail-page" article.pk %}">View more details</a>
+            </li>
+    </ul>
+    {% endfor %}
+
+<!--Pagination-->
+    {% if is_paginated  %}
+        <div class = "pagination">
+             {% if page_obj.has_previous %}
+               <a href="?{% if selected_sentiment %}sentiment_color={{ selected_sentiment }}&{% endif %}{% if selected_category %}category={{ selected_category }}&{% endif %}page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+        
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+                <a href="?{% if selected_sentiment %}sentiment_color={{ selected_sentiment }}&{% endif %}{% if selected_category %}category={{ selected_category }}&{% endif %}page={{ page_obj.next_page_number }}">Next</a>
+            {% endif %}
+        </div>
+    {% endif %}
+
+{% endblock  %}
