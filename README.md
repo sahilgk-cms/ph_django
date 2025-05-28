@@ -75,8 +75,11 @@ We can see the articles on http://localhost:8000/ph
 
 
 ## Screenshots
-- Article list view
+- **Article list view**
+![image](https://github.com/user-attachments/assets/3aedab4a-a17e-4b54-9075-6bb310482720)
 
 
-- Article detail view
+
+
+- **Article detail view**
 ![image](https://github.com/user-attachments/assets/c6efc11c-5e2f-428d-9d9a-d8cd7eedd624)
